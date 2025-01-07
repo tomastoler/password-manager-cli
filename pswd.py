@@ -1,6 +1,7 @@
 #!C:\Scripts\scripts\Scripts\python.exe
 
 import argparse
+import clipboard
 from storage import PasswordManagerFile
 
 def main():
@@ -13,6 +14,7 @@ def main():
     parser.add_argument("-d", "--delete", type=int, help="Delete a password")
     parser.add_argument("-e", "--edit", nargs=2, metavar=("ID", "NEW-PASSWORD"), help="Change password")
     parser.add_argument('-g', '--get', type=int, help="Get password")
+    parser.add_argument('-c', '--clear', action="store_true", help="Clear passwords")
     args = parser.parse_args()
     
     if args.gen_key:
@@ -35,6 +37,8 @@ def main():
     elif args.get:
         database.get(args.get)
         print(f"Password copied to clipboard")
+    elif args.clear:
+        clipboard.copy('')
     else:
         print("No command specified")
 
