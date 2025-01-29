@@ -1,13 +1,15 @@
 import tabulate
 import clipboard
+from pathlib import Path
 from passwords import encrypt, decrypt
 from cryptography.fernet import Fernet
+from utils.os import get_prefix_os
 
 
 class PasswordManagerFile:
     
-    key_path = 'C:/Scripts/password-manager-cli/key.txt'
-    passwords_path = 'C:/Scripts/password-manager-cli/passwords.txt'
+    key_path = get_prefix_os() / Path('password-manager-cli/key.txt')
+    passwords_path = get_prefix_os() + Path('password-manager-cli/password.txt')
     
     def __init__(self):
         pass
@@ -90,4 +92,3 @@ class PasswordManagerFile:
                 hashed_password = line.split(',')[2]
                 pswd = decrypt(hashed_password, self._get_key())
                 clipboard.copy(pswd)
-                
