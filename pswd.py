@@ -1,5 +1,3 @@
-#!C:\Scripts\scripts\Scripts\python.exe
-
 import argparse
 import clipboard
 from storage import PasswordManagerFile

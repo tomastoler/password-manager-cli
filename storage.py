@@ -9,7 +9,7 @@ from utils.os import get_prefix_os
 class PasswordManagerFile:
     
     key_path = get_prefix_os() / Path('password-manager-cli/key.txt')
-    passwords_path = get_prefix_os() + Path('password-manager-cli/password.txt')
+    passwords_path = get_prefix_os() / Path('password-manager-cli/passwords.txt')
     
     def __init__(self):
         pass
