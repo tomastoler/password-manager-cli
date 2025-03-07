@@ -5,6 +5,6 @@ def get_prefix_os() -> Path:
     if os.name == 'nt':
         return Path('C:/Scripts')
     elif os.name == 'posix':
-        return Path().home() / '.local' / 'scripts'
+        return Path('/home/tomas') / '.local' / 'scripts'
     else:
         raise Exception('OS not suported')
