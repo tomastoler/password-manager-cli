@@ -8,7 +8,7 @@ def main():
     parser.add_argument("-gk", "--gen-key", help="Generate key", action="store_true")
     parser.add_argument("-sk", "--set-key", help="Set key")
     parser.add_argument("-l", "--list", help="List all passwords", action="store_true")
-    parser.add_argument("-a", "--add", nargs=3, metavar=("USERNAME", "PASSWORD", "WEBSITE"), help="Add a new registry")
+    parser.add_argument("-a", "--add", nargs=3, metavar=("USERNAME", "PASSWORD-LENGTH", "WEBSITE"), help="Add a new registry")
     parser.add_argument("-d", "--delete", type=int, help="Delete a password")
     parser.add_argument("-e", "--edit", nargs=2, metavar=("ID", "NEW-PASSWORD"), help="Change password")
     parser.add_argument('-g', '--get', type=int, help="Get password")

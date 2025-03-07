@@ -1,7 +1,7 @@
 import tabulate
 import clipboard
 from pathlib import Path
-from passwords import encrypt, decrypt
+from passwords import encrypt, decrypt, generate_password
 from cryptography.fernet import Fernet
 from utils.os import get_prefix_os
 
@@ -37,8 +37,9 @@ class PasswordManagerFile:
                 last_id = max(int(line.split(',')[0]), last_id)
         return last_id
     
-    def add(self, username, password, website) -> None:
-        new_password = encrypt(password, self._get_key()).decode()
+    def add(self, username, password_length, website) -> None:
+        # new_password = encrypt(password, self._get_key()).decode()
+        new_password = encrypt(generate_password(int(password_length)), self._get_key()).decode()
         with open(self.passwords_path, 'a') as f:
             f.write(f"{self.get_last_id() + 1},{username},{new_password},{website}\n")
                     
@@ -64,7 +65,7 @@ class PasswordManagerFile:
             lines = f.readlines()
         new_lines = []
         for line in lines:
-            if line == ['\n']:
+            if line == ['\n'] or line == '\n':
                 continue
             if int(line.split(',')[0]) != id:
                 new_lines.append(line)
